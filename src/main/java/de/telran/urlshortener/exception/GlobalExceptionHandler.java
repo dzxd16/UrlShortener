@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice//используется для централизованной обработки исключений и глобальной настройки в REST API
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserNotAuthenticatedException.class)

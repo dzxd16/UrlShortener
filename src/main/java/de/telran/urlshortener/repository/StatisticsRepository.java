@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository
+@Repository//Аннотация @Repository в Java используется для обозначения классов,
+// реализующих функциональность DAO (Data Access Object). Она является частью
+// Spring Framework и упрощает работу с хранилищами данных.
 public class StatisticsRepository {
 
     @PersistenceContext

@@ -18,15 +18,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+@Configuration//Обозначает класс как источник конфигурации бинов.
+@EnableWebSecurity//используется для включения защиты веб-приложений
+@EnableMethodSecurity//Включение защиты методов
 public class SecurityConfig {
 
-    @Autowired
+    @Autowired//Автоматическое внедрение зависимостей
     private JwtAuthenticationFilter authenticationFilter;
 
-    @Bean
+    @Bean//говорит Spring создать экземпляр класса и управлять его жизненным циклом
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -42,12 +42,12 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+    @Bean//говорит Spring создать экземпляр класса и управлять его жизненным циклом
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @Bean//говорит Spring создать экземпляр класса и управлять его жизненным циклом
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
         return configuration.getAuthenticationManager();
     }

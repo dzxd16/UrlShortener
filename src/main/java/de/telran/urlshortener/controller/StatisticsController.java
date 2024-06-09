@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+//Аннотация @RestController в Spring Framework - это специализированная версия аннотации
+// @Controller, которая упрощает создание RESTful веб-сервисов.
+// Она сочетает в себе функциональность аннотаций @Controller и @ResponseBody,
+// предоставляя удобный способ создания REST API.
 @RestController
 @RequestMapping(value = "/api/statistics")
-@RequiredArgsConstructor
+@RequiredArgsConstructor//automatically generate a constructor
 public class StatisticsController {
 
     private final StatisticsService statisticsService;

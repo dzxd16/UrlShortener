@@ -9,7 +9,7 @@ public record UrlBindingResponseDto(
         String originalUrl,
         String shortUrl,
 
-        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonInclude(JsonInclude.Include.NON_NULL)//пустые поля не передаются
         Long count,
         LocalDate creationDate,
         LocalDate expirationDate

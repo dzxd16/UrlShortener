@@ -9,7 +9,7 @@ import java.util.Set;
 @Component
 public class SubscriptionMapper implements Mapper<Subscription, SubscriptionResponseDto> {
 
-    @Override
+    @Override//метод является переопределенным методом из суперкласса
     public SubscriptionResponseDto toDto(Subscription subscription) {
         return new SubscriptionResponseDto(
                 subscription.getId(),

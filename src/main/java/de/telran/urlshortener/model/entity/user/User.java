@@ -50,7 +50,13 @@ public class User {
 
 
     @Column(name = "role")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)//@Enumerated в Java используется
+    // для отображения перечислений (enums) в столбцы базы данных.
+//         EnumType.STRING: Значения enum будут храниться в столбце
+//    базы данных как строки. Это наиболее распространенный вариант,
+//    так как он обеспечивает наибольшую гибкость.
+//         EnumType.ORDINAL: Значения enum будут храниться в столбце базы данны
+//    как целочисленные порядковые номера.
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

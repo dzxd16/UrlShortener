@@ -6,20 +6,26 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Builder(toBuilder = true)
-@Entity
+@Data//это сокращенная аннотация, сочетающая возможности @ToString, @EqualsAndHashCode,
+// @Getter @Setter и @RequiredArgsConstructor
+@NoArgsConstructor//для создания конструктора без аргументов
+@AllArgsConstructor(access = AccessLevel.PRIVATE)//генерирует конструктор с параметрами для всех полей класса
+@Builder(toBuilder = true)//Флаг toBuilder = true добавляет функциональность, позволяющую
+// модифицировать уже созданный объект с помощью нового builder-а пошагово
+@Entity//определения класса, который должен быть отображен на таблицу в базе данных
+// с помощью операций CRUD (Create, Read, Update, Delete).
 @Table(name = "url_bindings")
-@EqualsAndHashCode(exclude = "user")
+@EqualsAndHashCode(exclude = "user")//указывает, что поле user не будет
+// использоваться при сравнении и генерации хеш-кода
 @ToString(exclude = "user")
 @NamedEntityGraphs({
         @NamedEntityGraph(
                 name = "UrlBindings.withUser",
                 attributeNodes = @NamedAttributeNode("user")
         )
-})
+})//Управляет тем, как JPA извлекает связанные сущности во время запроса к базе данных.
+//Определяет, какие сущности и их атрибуты должны быть получены вместе
+// с корневой сущностью в одном запросе.
 public class UrlBinding {
 
     @Id
@@ -49,6 +55,12 @@ public class UrlBinding {
     private Boolean isClosed = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
+//    Ленивая загрузка: FetchType.LAZY указывает, что JPA не будет
+//    автоматически загружать связанный объект из базы данных,
+//    когда извлекается владеющий объект.
+//    Загрузка по требованию: Когда происходит обращение к полю @ManyToOne
+//    , JPA выполнит дополнительный запрос,
+//    чтобы загрузить связанный объект из базы данных.
     @Getter @Setter
     private User user;
 

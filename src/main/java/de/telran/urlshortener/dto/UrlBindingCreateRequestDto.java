@@ -7,10 +7,11 @@ import java.time.LocalDate;
 
 
 public record UrlBindingCreateRequestDto(
-        @NotBlank
+        @NotBlank//гарантирует, что поле содержит хотя бы один символ, не являющийся пробелом
         String originalUrl,
         String pathPrefix,
-        @FutureOrPresent
+        @FutureOrPresent//Дата или время в будущем относительно текущего времени.
+//        Текущая дата или время.
         LocalDate expirationDate
 ) {
 }

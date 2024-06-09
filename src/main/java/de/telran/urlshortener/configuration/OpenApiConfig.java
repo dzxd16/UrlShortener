@@ -9,8 +9,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
-@Configuration
+//Обозначает класс как источник конфигурации бинов.
+@Configuration//
     public class OpenApiConfig {
 
         @Bean
